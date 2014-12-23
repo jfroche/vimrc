@@ -10,7 +10,7 @@ set hlsearch
 set ttyfast
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set clipboard=unnamedplus
+set clipboard=unnamed
 syntax on
 set history=20000
 set backupdir=~/.tmp
