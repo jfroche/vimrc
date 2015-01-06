@@ -4,6 +4,8 @@ set nocompatible
 set expandtab
 set smarttab
 set autoindent
+" 256 Colors
+set t_Co=256
 " Highlight dynamically as pattern is typed
 set incsearch
 set hlsearch
