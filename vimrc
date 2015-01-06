@@ -37,7 +37,7 @@ autocmd BufRead,BufNewFile *.pp setlocal tabstop=2 shiftwidth=2 softtabstop=2 ex
 " vundle
 set nocompatible
 filetype off
-set rtp+=/home/jfroche/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'tpope/vim-fugitive'
 Bundle 'Puppet-Syntax-Highlighting'
