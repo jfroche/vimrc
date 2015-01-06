@@ -10,8 +10,6 @@ set t_Co=256
 set incsearch
 set hlsearch
 set ttyfast
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set clipboard=unnamed
 syntax on
 set history=20000
