@@ -46,6 +46,15 @@ Bundle 'avakhov/vim-yaml'
 Bundle 'Syntastic'
 Bundle 'Tabular'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'itchyny/lightline.vim'
+Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-misc'
+Bundle 'rking/ag.vim'
+Bundle 'benmills/vimux'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'majutsushi/tagbar'
+
 call vundle#end()  
 filetype plugin indent on
 
@@ -59,3 +68,23 @@ cmap w!! w !sudo tee %
 " statusline
 set laststatus=2
 set statusline=%n:%<%f\ %h%m%r\ %=%-10.(%l,%c%V%)\ %4L\ %P
+
+" vim-session
+let g:session_autosave_periodic=2
+let g:session_autosave='yes'
+let g:session_autoload='no'
+" Set session folder to the same as vim-startify
+let g:session_directory='~/.vim/sessions'
+" Ag options (--vimgrep missing)
+let g:ag_prg="ag --nogroup --nocolor --column"
+" zope
+autocmd BufRead,BufNewFile *.zcml :set ft=xml 
+" CTRLP option
+let g:ctrlp_working_path_mode = 'cr'
+" solarized config
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+colorscheme solarized
+" ctags
+set tags+=tags;$HOME
