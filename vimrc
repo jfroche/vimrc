@@ -54,7 +54,7 @@ Bundle 'benmills/vimux'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
-
+Bundle 'hynek/vim-python-pep8-indent'
 call vundle#end()  
 filetype plugin indent on
 
