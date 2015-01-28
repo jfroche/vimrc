@@ -88,3 +88,6 @@ let g:solarized_termtrans=1
 colorscheme solarized
 " ctags
 set tags+=tags;$HOME
+" python pdb
+iab ipdb import ipdb;ipdb.set_trace()
+iab pdbs import pdb;pdb.set_trace()
