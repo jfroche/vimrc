@@ -22,7 +22,7 @@ set shortmess=atI
 
 " ignore
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.pyc,*.pyo
-let g:netrw_list_hide= '.*\.pyc$,.*\.pyo$,*\.swp$'
+let g:netrw_list_hide= '.*\.pyc$,.*\.pyo$,*\.swp$,tags'
 
 " undo
 set undodir=~/.tmp/undodir
@@ -91,3 +91,13 @@ set tags+=tags;$HOME
 " python pdb
 iab ipdb import ipdb;ipdb.set_trace()
 iab pdbs import pdb;pdb.set_trace()
+" spell check
+"
+autocmd BufRead *.{py,txt,rst,tex} setlocal spell spelllang=en_us,fr
+autocmd BufRead mutt-* setlocal spell spelllang=fr,en
+
+" trac - cartman
+autocmd BufNewFile *.cm.ticket setf mail
+
+" syntastic
+let g:syntastic_loc_list_height=3
