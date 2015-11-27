@@ -12,7 +12,6 @@ set hlsearch
 set ttyfast
 set clipboard=unnamed
 syntax on
-set history=20000
 set backupdir=~/.tmp
 set directory=~/.tmp
 " Show the cursor position
@@ -55,6 +54,16 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'dhruvasagar/vim-table-mode'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Bundle 'hrp/EnhancedCommentify'
+Plugin 'honza/vim-snippets'
+Plugin 'fatih/vim-go'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
+Bundle 'saltstack/salt-vim'
+Bundle 'roman/golden-ratio'
 call vundle#end()  
 filetype plugin indent on
 
@@ -70,7 +79,7 @@ set laststatus=2
 set statusline=%n:%<%f\ %h%m%r\ %=%-10.(%l,%c%V%)\ %4L\ %P
 
 " vim-session
-let g:session_autosave_periodic=2
+let g:session_autosave_periodic=1
 let g:session_autosave='yes'
 let g:session_autoload='no'
 " Set session folder to the same as vim-startify
@@ -79,6 +88,8 @@ let g:session_directory='~/.vim/sessions'
 let g:ag_prg="ag --nogroup --nocolor --column"
 " zope
 autocmd BufRead,BufNewFile *.zcml :set ft=xml 
+" go
+autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 expandtab smarttab
 " CTRLP option
 let g:ctrlp_working_path_mode = 'cr'
 " solarized config
@@ -101,3 +112,19 @@ autocmd BufNewFile *.cm.ticket setf mail
 
 " syntastic
 let g:syntastic_loc_list_height=3
+
+" template management
+function! LoadFileTemplate()
+  silent! 0r ~/.vim/templates/%:e.tpl
+  syn match vimTemplateMarker "<+.++>" containedin=ALL
+  hi vimTemplateMarker guifg=#67a42c guibg=#112300 gui=bold
+endfunction
+
+autocmd BufNewFile * :call LoadFileTemplate()
+nnoremap <c-j> /<+.\{-1,}+><cr>c/+>/e<cr>
+inoremap <c-j> <ESC>/<+.\{-1,}+><cr>c/+>/e<cr>
+
+let g:UltiSnipsExpandTrigger="<right>"
+
+" Change the default leader
+let mapleader = ","
