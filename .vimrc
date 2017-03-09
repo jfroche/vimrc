@@ -64,6 +64,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 Bundle 'saltstack/salt-vim'
 Bundle 'roman/golden-ratio'
+Plugin 'LnL7/vim-nix'
 call vundle#end()  
 filetype plugin indent on
 
