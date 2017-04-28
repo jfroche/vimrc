@@ -18,7 +18,7 @@ set directory=~/.tmp
 set ruler
 " Don't show the intro message when starting Vim
 set shortmess=atI
-
+set backspace=2
 " ignore
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.pyc,*.pyo
 let g:netrw_list_hide= '.*\.pyc$,.*\.pyo$,*\.swp$,tags'
@@ -42,7 +42,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Puppet-Syntax-Highlighting'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'avakhov/vim-yaml'
-Bundle 'Syntastic'
 Bundle 'Tabular'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'itchyny/lightline.vim'
@@ -66,7 +65,11 @@ Bundle 'saltstack/salt-vim'
 Bundle 'roman/golden-ratio'
 Plugin 'LnL7/vim-nix'
 Plugin 'martinda/Jenkinsfile-vim-syntax'
-call vundle#end()  
+Plugin 'rodjek/vim-puppet'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'w0rp/ale'
+Plugin 'reedes/vim-pencil'
+call vundle#end()
 filetype plugin indent on
 
 " hit "-" (minus) anytime to open the file explorer to show files adjacent to
@@ -86,8 +89,10 @@ let g:session_autosave='yes'
 let g:session_autoload='no'
 " Set session folder to the same as vim-startify
 let g:session_directory='~/.vim/sessions'
-" Ag options (--vimgrep missing)
-let g:ag_prg="ag --nogroup --nocolor --column"
+" Ag options
+" blocked by https://github.com/ggreer/the_silver_searcher/issues/915
+let g:ag_prg="ag --vimgrep -U"
+let g:ag_working_path_mode="r"
 " zope
 autocmd BufRead,BufNewFile *.zcml :set ft=xml 
 " go
@@ -108,12 +113,15 @@ iab pdbs import pdb;pdb.set_trace()
 "
 autocmd BufRead *.{py,txt,rst,tex} setlocal spell spelllang=en_us,fr
 autocmd BufRead mutt-* setlocal spell spelllang=fr,en
+autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
+au      Filetype mail setlocal formatoptions+=aw
 
 " trac - cartman
 autocmd BufNewFile *.cm.ticket setf mail
 
 " syntastic
 let g:syntastic_loc_list_height=3
+let g:syntastic_python_checkers=['flake8']
 
 " template management
 function! LoadFileTemplate()
@@ -130,3 +138,9 @@ let g:UltiSnipsExpandTrigger="<right>"
 
 " Change the default leader
 let mapleader = ","
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 1
+let g:winfixheight = 4
